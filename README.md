@@ -20,6 +20,14 @@ cd Ollama-OpenWebUI-Kubernetes
 ```
 kubectl apply -f ./
 ```
+If not work, applay any single manifest.
+Note: not use ollama into the cluster, instead use it into current operation system for for better performance and active support for GPU.
+
+Set environment system:
+```
+OLLAMA_INTEL_GPU:1
+OLLAMA_VULKAN:1
+```
 
 ## Listing the Kubernetes Pods
 
@@ -37,7 +45,7 @@ kube-system            storage-provisioner                          1/1     Runn
 kube-system            vpnkit-controller                            1/1     Running   0          85m
 kubernetes-dashboard   dashboard-metrics-scraper-7cbc78bdc6-8kv8d   1/1     Running   0          80m
 kubernetes-dashboard   kubernetes-dashboard-7d748f6c6b-nfsjz        1/1     Running   0          80m
-ollama                 ollama-56c4986548-qk2r6                      2/2     Running   0          84m
+ollama                 ollama-56c4986548-qk2r6                      2/2     Running   0          84m (if applay deployment_ollama.yaml)
 ollama                 open-webui-85799c995c-zxhgf                  1/1     Running   0          84m
 ```
 
