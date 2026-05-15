@@ -49,9 +49,35 @@ ollama                 open-webui-85799c995c-zxhgf                  1/1     Runn
 kubectl port-forward svc/svc-open-webui 8080:8080 -n ollama
 ```
 
+## Access via Ingress and local domain (no port-forward)
+
+If you prefer to access Open WebUI through a local domain instead of using `kubectl port-forward`, you can use the included Ingress manifest and a local hosts entry. This avoids the port-forward step.
+
+1. Apply the Ingress manifest included in this repository:
+
+```bash
+kubectl apply -f ingress.yaml
+```
+
+Note: ensure an Ingress controller (for example `ingress-nginx`) is installed and running in your cluster.
+
+2. Add the local domain to your hosts file so it resolves to your machine:
+
+- On Windows edit `C:\Windows\System32\drivers\etc\hosts`
+- On macOS/Linux edit `/etc/hosts`
+
+Add the following lines (use `127.0.0.1` or your machine IP that points to the cluster):
+
+```
+127.0.0.1 open-webui.kubernetes.local
+127.0.0.1 kubernetes.docker.internal
+```
+
+This method replaces the `kubectl port-forward` command. The included `ingress.yaml` routes the host `open-webui.kubernetes.local` to the `svc-open-webui` service in the `ollama` namespace — adjust if you changed service names or namespaces.
+
 ## Open Open WebUI
 
-Open [http://localhost:8080](http://localhost:8080) to access Open WebUI.
+Open [http://localhost:8080](http://localhost:8080) to access Open WebUI with port-forward or http://open-webui.kubernetes.local used ingress.
 
 <img width="1185" alt="image" src="https://github.com/user-attachments/assets/e63a6d5d-9655-4ed2-b39b-2db019eca626">
 
