@@ -11,8 +11,8 @@ Running Ollama and Open WebUI in a Kubernetes Cluster
 ## Clone the repository
 
 ```
-git clone https://github.com/ajeetraina/ollama-openwebui-kubernetes
-cd ollama-openwebui-kubernetes
+git clone https://github.com/tommyblink182/Ollama-OpenWebUI-Kubernetes
+cd Ollama-OpenWebUI-Kubernetes
 ```
 
 ## Apply the Kubernetes Manifest
